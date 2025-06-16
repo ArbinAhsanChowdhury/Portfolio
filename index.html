@@ -1,71 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abrin's Website</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Arbin Ahsan Chowdhury - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font family to the body */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Light gray background for the entire page */
+            background-color: #f0f4f8;
+            transition: background-color 0.3s ease; /* Smooth transition for background */
+        }
+        /* Dark mode styles for body background */
+        html.dark body {
+            background-color: #1a202c; /* Dark background */
+        }
+        /* Custom scrollbar for better aesthetics across browsers */
+        ::-webkit-scrollbar {
+            width: 8px; /* Width of the scrollbar */
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0; /* Light gray track background */
+            border-radius: 10px; /* Rounded corners for the track */
+        }
+        html.dark ::-webkit-scrollbar-track {
+            background: #2d3748; /* Darker track background for dark mode */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8; /* Gray thumb color */
+            border-radius: 10px; /* Rounded corners for the thumb */
+        }
+        html.dark ::-webkit-scrollbar-thumb {
+            background: #718096; /* Darker thumb for dark mode */
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* Darker gray thumb on hover */
+        }
+        html.dark ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568; /* Even darker thumb on hover in dark mode */
+        }
+        /* Keyframe animations for subtle entry effects */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Apply animations using Tailwind's arbitrary values */
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        /* Delay utility for chained animations */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+    </style>
 </head>
-<body>
-  <header>
-    <nav>
-      <ul class="navbar">
-        <li class="brand">Abrin's home</li>
-        <li><a href="work.html" class="work">Work</a></li>
-        <li><a href="aboutMe.html" class="aboutMe">About Me</a></li>
-        <li><a href="contact.html" class="contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <section id="home" class="home">
-    <h1>Welcome to Abrin's Home</h1>
-  </section>
-
-  <section id="work" class="work">
-    <h2>My Work</h2>
-  </section>
-
-  <section id="about" class="about">
-    <h2>About Me</h2>
-  </section>
-
-  <footer>
-  <div class="footer-content">
-    <div class="contact-info">
-      <p>📍 Location: Santahar, Rajshahi, Bangladesh</p>
-      <p>📧 Email: <a href="mailto:mdarbinahsanchowdhury@gmail.com">mdarbinahsanchowdhury@gmail.com</a></p>
-    </div>
-    
-    <div class="social-links">
-      <a href="https://www.facebook.com/mdarbinahsan.chowdhury.35" target="_blank">Facebook</a>
-      <a href="https://www.linkedin.com/in/md-arbin-ahsan-chowdhury-5b8991334/" target="_blank">LinkedIn</a>
-    </div>
-
-    <div class="quick-links">
-      <a href="index.html">Home</a> |
-      <a href="work.html">Work</a> |
-      <a href="about.html">About Me</a> |
-      <a href="contact.html">Contact</a>
-    </div>
-
-    <div class="subscribe">
-      <p>Subscribe for updates:</p>
-      <input type="email" placeholder="Enter your email" />
-      <button>Subscribe</button>
-    </div>
-
-    <div class="legal-links">
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Use</a>
-    </div>
-
-    <p>© 2025 Abrin's. All Rights Reserved.</p>
-    <p class="brand-message">"Creating magic through code & design!"</p>
-  </div>
-</footer>
-    
-
-  <script src="script.js"></script>
-</body>
-</html>
+<body class="text-gray-800 dark:text-gray-100">
+    <!-- Header/Navigation Section -->
+    <header class="bg-[#f0f4f8] dark:bg-gray-900 shadow-md py-4 px-6 md:px-12 fixed w-full z-20 rounded-b-lg transition duration-300">
+        <nav class="container mx-auto flex justify-between items-center">
+            <!-- Brand/Logo linking to the hero section -->
+            <a href="#hero" class="text-2xl font-bold text-blue-600 hover:text-blue-800 transition duration-300">Arbin's Home</a>
+            <!-- Desktop Navigation Links -->
+            <ul class="hidden md:flex space-x-8 items-center">
+                <li><a href="#about" class="text-lg font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition duration-300">About</a></li>
+                <li><a href="#skills" class="text-lg font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition duration-300">Skills</a></li>
+                <li><a href="#projects" class="text-lg font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition duration-300">Projects</a></li>
+                <li><a href="#contact" class="text-lg font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition duration-300">Contact</a></li>
+                <!-- Theme Toggle Button for Desktop -->
+                <li>
+                    <button id="theme-toggle-desktop" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 dark:text-gray-300">
+                        <!-- Sun icon for light mode -->
+                        <svg id="sun-icon-desktop" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.878l.707-.707M3.968 19.325l.707-.707m0-11.314l-.707-.707m11.314 0l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path>
+                        </svg>
+                        <!-- Moon icon for dark mode -->
+                        <svg id="moon-icon-desktop" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9 9 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+            <!-- Mobile Menu Button (Hamburger Icon) and Mobile Theme Toggle -->
+            <div class="flex items-center space-x-4 md:hidden">
+                <!-- Theme Toggle Button for Mobile -->
+                <button id="theme-toggle-mobile" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 dark:text-gray-300">
+                    <!-- Sun icon for light mode -->
+                    <svg id="sun-icon-mobile" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-4.878l.707-.707M3.968 19.325l.707-.707m0-11.314l-.707-.707m11.314 0l.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"></path>
+                    </svg>
+                    <!-- Moon icon for dark mode -->
+                    <svg id="moon-icon-mobile" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9 9 0 008.354-5.646z"></path>
+                    </svg>
+                </button>
+                <button id="mobile-menu-button" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu (Initially hidden, toggled by JavaScript) -->
+        <div id="mobile-menu" class="md:hidden mt-4 hidden bg-[#f0f4f8] dark:bg-gray-800 rounded-md shadow-lg p-4 transition duration-300">
+            <ul class="flex flex-col space-y-4">
+                <li><a href="#about" class="block text-lg font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition duration-300 py-2 px-4 rounded-md bg-[#f0f4f8] dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">About</a></li>
+                <li><a href="#skills" class="block text-lg font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition duration-300 py-2 px-4 rounded-md bg-[#f0f4f8] dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">Skills</a></li>
+                <li><a href="#projects" class="block text-lg font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition duration-300 py-2 px-4 rounded-md bg-[#f0f4f8] dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">Projects</a></li>
+                <li><a href="#contact" class="block text-lg font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition duration-300 py-2 px-4 rounded-md bg-[#f0f4f8] dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <main class="pt-20">
+        <!-- Hero Section - First visible section on load -->
+        <section id="hero" class="relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20 md:py-32 flex items-center justify-center min-h-[70vh] rounded-b-3xl shadow-xl">
+            <div class="container mx-auto text-center px-4">
+                <!-- Profile picture updated -->
+                <img src="image_e5b36f.jpg" alt="Md. Arbin Ahsan Chowdhury Profile Picture" class="w-36 h-36 rounded-full mx-auto mb-6 border-4 border-white shadow-lg animate-fade-in delay-100">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-up"><span class="text-yellow-300">Md. Arbin Ahsan Chowdhury</span></h1>
+                <p class="text-xl md:text-2xl font-light mb-8 animate-fade-in-up delay-200">Student of Computer Science at United International University</p>
+                <!-- Call to action button -->
+                <a href="#projects" class="inline-block bg-white text-blue-700 hover:bg-blue-100 px-8 py-3 rounded-full text-lg font-semibold shadow-lg transition duration-300 transform hover:scale-105 animate-fade-in-up delay-400">
+                    View My Work
+                </a>
+            </div>
+        </section>
+        <!-- About Me Section -->
+        <section id="about" class="py-16 md:py-24 bg-[#f0f4f8] dark:bg-gray-800 rounded-lg m-8 shadow-lg animate-fade-in delay-300 transition duration-300">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-4xl font-bold text-center text-blue-700 dark:text-blue-400 mb-12">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                    <!-- About Me image placeholder -->
+                    <div class="md:w-1/3 mb-8 md:mb-0">
+                        <img src="https://placehold.co/300x300/E0F2FE/1E40AF?text=About+Image" alt="About Me Image" class="w-full h-auto rounded-xl shadow-md">
+                    </div>
+                    <!-- About Me description -->
+                    <div class="md:w-2/3 text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                        <p class="mb-4">
+                            Hi there! I'm <span class="font-semibold text-blue-600 dark:text-blue-400">Md. Arbin Ahsan Chowdhury</span> a student of Computer Science with a strong passion for innovation new things.
+                            With almost 2 years of experience in the field, I thrive on solving complex problems and bringing innovative ideas to life through clean, efficient code.
+                        </p>
+                        <p class="mb-4">
+                            My journey as a computer science student has been incredibly enjoyable. Throughout this journey, I've had the opportunity to learn a great deal and explore many new things. Although I'm still learning, I have a good grasp of front-end development and know how to create responsive website designs. I've also learned how to optimize code, though I still have much more to learn. I'm continuously acquiring new knowledge and am actively seeking new opportunities to learn and grow.
+                        </p>
+                        <p>
+                            Beyond the world of coding, my passions include hiking trails, capturing moments through photography, and traveling, with a special fondness for bike trips. I'm convinced that a balanced life significantly fuels my creativity and innovation in my professional endeavors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Skills Section -->
+        <section id="skills" class="py-16 md:py-24 bg-[#f0f4f8] dark:bg-gray-900 rounded-lg m-8 shadow-lg animate-fade-in delay-400 transition duration-300">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-4xl font-bold text-center text-blue-700 dark:text-blue-400 mb-12">My Skills</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <!-- Skill Card: HTML & CSS -->
+                    <div class="flex flex-col items-center p-6 bg-[#f0f4f8] dark:bg-gray-700 rounded-xl shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg">
+                        <svg class="w-12 h-12 text-blue-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 4l-4 4 4 4"></path>
+                        </svg>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">HTML & CSS</h3>
+                        <p class="text-center text-gray-600 dark:text-gray-300 text-sm">Semantic markup and responsive styling with modern CSS.</p>
+                    </div>
+                    <!-- Skill Card: Git & GitHub -->
+                    <div class="flex flex-col items-center p-6 bg-[#f0f4f8] dark:bg-gray-700 rounded-xl shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg">
+                        <svg class="w-12 h-12 text-orange-500 mb-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.47.087.68-.205.68-.456 0-.226-.008-.827-.012-2.706-2.784.607-3.37-1.341-3.37-1.341-.454-1.153-1.107-1.463-1.107-1.463-.907-.62.069-.608.069-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.528 2.341 1.089 2.91.834.091-.647.349-1.089.635-1.336-2.22-.253-4.555-1.111-4.555-4.93 0-1.09.39-1.986 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.7.112 2.493.324 1.909-1.296 2.747-1.025 2.747-1.025.546 1.378.202 2.397.099 2.65.64.701 1.029 1.597 1.029 2.687 0 3.828-2.339 4.673-4.566 4.92.359.309.678.92.678 1.855 0 1.336-.012 2.419-.012 2.743 0 .252.21.549.686.455C21.144 20.198 24 16.442 24 12.017 24 6.484 19.522 2 14 2h-2z" clip-rule="evenodd"></path>
+                        </svg>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Git & GitHub</h3>
+                        <p class="text-center text-gray-600 dark:text-gray-300 text-sm">Version control and collaborative development.</p>
+                    </div>
+                    <!-- Skill Card: C Programming -->
+                    <div class="flex flex-col items-center p-6 bg-[#f0f4f8] dark:bg-gray-700 rounded-xl shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg">
+                        <svg class="w-12 h-12 text-purple-600 mb-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 7h2v2h-2zm0 4h2v6h-2z"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">C Programming</h3>
+                        <p class="text-center text-gray-600 dark:text-gray-300 text-sm">Foundational programming and algorithms.</p>
+                    </div>
+                    <!-- Skill Card: C++ Programming -->
+                    <div class="flex flex-col items-center p-6 bg-[#f0f4f8] dark:bg-gray-700 rounded-xl shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg">
+                        <svg class="w-12 h-12 text-blue-700 mb-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">C++ Programming</h3>
+                        <p class="text-center text-gray-600 dark:text-gray-300 text-sm">Object-oriented programming and performance.</p>
+                    </div>
+                    <!-- Skill Card: Java Programming -->
+                    <div class="flex flex-col items-center p-6 bg-[#f0f4f8] dark:bg-gray-700 rounded-xl shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg">
+                        <svg class="w-12 h-12 text-red-700 mb-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 7c-1.66 0-3 1.34-3 3v2h2v-2c0-.55.45-1 1-1s1 .45 1 1v2h2v-2c0-1.66-1.34-3-3-3z"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Java Programming</h3>
+                        <p class="text-center text-gray-600 dark:text-gray-300 text-sm">Developing robust and scalable applications.</p>
+                    </div>
+                     <!-- Skill Card: Video Editing -->
+                    <div class="flex flex-col items-center p-6 bg-[#f0f4f8] dark:bg-gray-700 rounded-xl shadow-md transition duration-300 transform hover:scale-105 hover:shadow-lg">
+                        <svg class="w-12 h-12 text-green-500 mb-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7V5h10v14zM9 8h6v2H9zm0 3h6v2H9zm0 3h6v2H9z"/>
+                        </svg>
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Video Editing</h3>
+                        <p class="text-center text-gray-600 dark:text-gray-300 text-sm">Creating engaging visual content.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 md:py-24 bg-[#f0f4f8] dark:bg-gray-800 rounded-lg m-8 shadow-lg animate-fade-in delay-500 transition duration-300">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <h2 class="text-4xl font-bold text-center text-blue-700 dark:text-blue-400 mb-12">My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Project Card 1: E-commerce Website -->
+                    <div class="bg-[#f0f4f8] dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105 hover:shadow-xl">
+                        <img src="https://placehold.co/400x250/C4D8ED/0D3A6B?text=E-commerce+Site" alt="E-commerce Website Thumbnail" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Modern E-commerce Platform</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-base mb-4">A full-stack e-commerce web application with user authentication, product catalog, shopping cart, and order processing.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-800 dark:text-blue-100">HTML & CSS</span>
+                            </div>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold flex items-center group dark:text-blue-400 dark:hover:text-blue-600">
+                                View Project
+                                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Project Card 2: Personal Blog -->
+                        <div class="bg-[#f0f4f8] dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105 hover:shadow-xl">
+                            <img src="https://placehold.co/400x250/C4D8ED/0D3A6B?text=Personal+Blog" alt="Personal Blog Thumbnail" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Interactive Personal Blog</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-base mb-4">A responsive blog platform built to share articles and insights, featuring comments section and search functionality.</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-800 dark:text-blue-100">Next.js</span>
+                                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-green-800 dark:text-green-100">Markdown</span>
+                                    <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-purple-800 dark:text-purple-100">CSS Modules</span>
+                                </div>
+                                <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold flex items-center group dark:text-blue-400 dark:hover:text-blue-600">
+                                    View Project
+                                    <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Project Card 3: Task Management App -->
+                            <div class="bg-[#f0f4f8] dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105 hover:shadow-xl">
+                                <img src="https://placehold.co/400x250/C4D8ED/0D3A6B?text=Task+Manager" alt="Task Management App Thumbnail" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Collaborative Task Manager</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 text-base mb-4">A single-page application for managing tasks, supporting drag-and-drop, due dates, and user assignments.</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-800 dark:text-blue-100">Vue.js</span>
+                                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-green-800 dark:text-green-100">Firebase</span>
+                                        <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-purple-800 dark:text-purple-100">Tailwind CSS</span>
+                                    </div>
+                                    <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold flex items-center group dark:text-blue-400 dark:hover:text-blue-600">
+                                        View Project
+                                        <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Project Card 4: Weather Dashboard -->
+                                <div class="bg-[#f0f4f8] dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transition duration-300 transform hover:scale-105 hover:shadow-xl">
+                                    <img src="https://placehold.co/400x250/C4D8ED/0D3A6B?text=Weather+App" alt="Weather Dashboard Thumbnail" class="w-full h-48 object-cover">
+                                    <div class="p-6">
+                                        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Real-time Weather Dashboard</h3>
+                                        <p class="text-gray-600 dark:text-gray-300 text-base mb-4">A web application displaying current weather and forecast data using a third-party API.</p>
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-blue-800 dark:text-blue-100">JavaScript</span>
+                                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-green-800 dark:text-green-100">REST API</span>
+                                            <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-purple-800 dark:text-purple-100">HTML/CSS</span>
+                                        </div>
+                                        <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold flex items-center group dark:text-blue-400 dark:hover:text-blue-600">
+                                            View Project
+                                            <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Contact Section -->
+                        <section id="contact" class="py-16 md:py-24 bg-[#f0f4f8] dark:bg-gray-900 rounded-lg m-8 shadow-lg animate-fade-in delay-600 transition duration-300">
+                            <div class="container mx-auto px-4 max-w-3xl">
+                                <h2 class="text-4xl font-bold text-center text-blue-700 dark:text-blue-400 mb-12">Connect With Me</h2>
+                                <div class="flex justify-center space-x-6">
+                                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="text-blue-700 hover:text-blue-900 transition duration-300 dark:text-blue-400 dark:hover:text-blue-600" aria-label="LinkedIn Profile">
+                                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                                        </svg>
+                                    </a>
+                                    <a href="https://github.com/yourprofile" target="_blank" class="text-gray-700 hover:text-gray-900 transition duration-300 dark:text-gray-300 dark:hover:text-gray-500" aria-label="GitHub Profile">
+                                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.47.087.68-.205.68-.456 0-.226-.008-.827-.012-2.706-2.784.607-3.37-1.341-3.37-1.341-.454-1.153-1.107-1.463-1.107-1.463-.907-.62.069-.608.069-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.528 2.341 1.089 2.91.834.091-.647.349-1.089.635-1.336-2.22-.253-4.555-1.111-4.555-4.93 0-1.09.39-1.986 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.7.112 2.493.324 1.909-1.296 2.747-1.025 2.747-1.025.546 1.378.202 2.397.099 2.65.64.701 1.029 1.597 1.029 2.687 0 3.828-2.339 4.673-4.566 4.92.359.309.678.92.678 1.855 0 1.336-.012 2.419-.012 2.743 0 .252.21.549.686.455C21.144 20.198 24 16.442 24 12.017 24 6.484 19.522 2 14 2h-2z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                    <a href="https://facebook.com/yourprofile" target="_blank" class="text-blue-800 hover:text-blue-900 transition duration-300 dark:text-blue-500 dark:hover:text-blue-600" aria-label="Facebook Profile">
+                                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.776-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.262c-1.225 0-1.628.772-1.628 1.563V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z"></path>
+                                        </svg>
+                                    </a>
+                                    <a href="https://instagram.com/yourprofile" target="_blank" class="text-pink-600 hover:text-pink-700 transition duration-300 dark:text-pink-400 dark:hover:text-pink-500" aria-label="Instagram Profile">
+                                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm7.6-9.6c-.66 0-1.2.54-1.2 1.2s.54 1.2 1.2 1.2 1.2-.54 1.2-1.2-.54-1.2-1.2-1.2z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+                    <!-- Footer Section -->
+                    <footer class="bg-gray-800 text-white py-8 text-center rounded-t-lg shadow-inner dark:bg-gray-900 transition duration-300">
+                        <div class="container mx-auto px-4">
+                            <p>&copy; <span id="current-year"></span> Md. Arbin Ahsan Chowdhury. All rights reserved.</p>
+                            <p class="mt-2">Built with ❤️ and Tailwind CSS.</p>
+                        </div>
+                    </footer>
+                    <script>
+                        // Get the current year for the footer
+                        document.getElementById('current-year').textContent = new Date().getFullYear();
+                        // Smooth scrolling for all internal navigation links
+                        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                            anchor.addEventListener('click', function (e) {
+                                e.preventDefault(); // Prevent default anchor click behavior
+                                const targetId = this.getAttribute('href'); // Get the href attribute (e.g., "#about")
+                                const targetElement = document.querySelector(targetId); // Find the corresponding element
+                                if (targetElement) {
+                                    // Scroll to the target element with smooth behavior
+                                    targetElement.scrollIntoView({
+                                        behavior: 'smooth'
+                                    });
+                                    // Close mobile menu if open after clicking a link (for better UX)
+                                    const mobileMenu = document.getElementById('mobile-menu');
+                                    if (!mobileMenu.classList.contains('hidden')) {
+                                        mobileMenu.classList.add('hidden');
+                                    }
+                                }
+                            });
+                        });
+                        // Mobile menu toggle functionality (hamburger icon)
+                        const mobileMenuButton = document.getElementById('mobile-menu-button');
+                        const mobileMenu = document.getElementById('mobile-menu');
+                        mobileMenuButton.addEventListener('click', () => {
+                            // Toggle the 'hidden' class to show/hide the mobile menu
+                            mobileMenu.classList.toggle('hidden');
+                        });
+                        // Theme toggle functionality
+                        const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
+                        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+                        const htmlElement = document.documentElement; // This is the <html> tag
+                        // Icons for desktop toggle
+                        const sunIconDesktop = document.getElementById('sun-icon-desktop');
+                        const moonIconDesktop = document.getElementById('moon-icon-desktop');
+                        // Icons for mobile toggle
+                        const sunIconMobile = document.getElementById('sun-icon-mobile');
+                        const moonIconMobile = document.getElementById('moon-icon-mobile');
+                        // Function to apply the selected theme
+                        function applyTheme(theme) {
+                            if (theme === 'dark') {
+                                htmlElement.classList.add('dark');
+                                sunIconDesktop.classList.add('hidden');
+                                moonIconDesktop.classList.remove('hidden');
+                                sunIconMobile.classList.add('hidden');
+                                moonIconMobile.classList.remove('hidden');
+                            } else {
+                                htmlElement.classList.remove('dark');
+                                sunIconDesktop.classList.remove('hidden');
+                                moonIconDesktop.classList.add('hidden');
+                                sunIconMobile.classList.remove('hidden');
+                                moonIconMobile.classList.add('hidden');
+                            }
+                        }
+                        // Check for saved theme preference on page load
+                        const savedTheme = localStorage.getItem('theme');
+                        if (savedTheme) {
+                            applyTheme(savedTheme);
+                        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                            // If no preference saved, check system preference
+                            applyTheme('dark');
+                        } else {
+                            // Default to light mode if no preference and system is not dark
+                            applyTheme('light');
+                        }
+                        // Function to toggle theme
+                        function toggleTheme() {
+                            if (htmlElement.classList.contains('dark')) {
+                                applyTheme('light');
+                                localStorage.setItem('theme', 'light');
+                            } else {
+                                applyTheme('dark');
+                                localStorage.setItem('theme', 'dark');
+                            }
+                        }
+                        // Add event listeners to both toggle buttons
+                        if (themeToggleDesktop) {
+                            themeToggleDesktop.addEventListener('click', toggleTheme);
+                        }
+                        if (themeToggleMobile) {
+                            themeToggleMobile.addEventListener('click', toggleTheme);
+                        }
+                    </script>
+                </body>
+                </html>
